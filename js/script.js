@@ -9,7 +9,23 @@ function cine(id,nombre,loc,max){
 	this.max = max;
 }
 
-/*
+
+function usuario(id,nombre,apellido,nick){
+	this.id = id;
+	this.nombre = nombre;
+	this.apellido = apellido;
+	this.nick = nick;
+}
+
+function pelicula(id,id_cine,nombre,foto,sinopsis,trailer){
+	this.id = id;
+	this.id_cine = id_cine;
+	this.nombre = nombre;
+	this.foto = foto;
+	this.sinopsis = sinopsis;
+	this.trailer = trailer;
+}
+
 var cine1 = {
      id  : "cine1",
      nombre : "208",
@@ -31,47 +47,34 @@ var cine3 = {
  }
 var peli1 = {
 	id : "peli1",
-	id-cine : "cine1",
+	id_cine : "cine1",
 	nombre : "esperando",
 	foto : "wwwwwww.gooogle.com.ar",
 	sinopsis : "una cagada",
-	trailer : "www.youtube.com",
+	trailer : "https://www.youtube.com/embed/sC9abcLLQpI",
 }
 
 var peli2 = {
 	id : "peli2",
-	id-cine : "cine2",
+	id_cine : "cine2",
 	nombre : "endo",
 	foto : "wwww.gooogle.com.ar",
 	sinopsis : "una cagada",
-	trailer : "www.youtube.com", 
+	trailer : "https://www.youtube.com/embed/sC9abcLLQpI", 
 }
 
 var peli3 = {
 	id : "peli3",
-	id-cine : "cine3",
+	id_cine : "cine3",
 	nombre : "garcha",
 	foto : "wwwwwww.gooogle.com.ar",
 	sinopsis : "pepe",
-	trailer : "www.youtube.com",
-}
-*/
-
-function usuario(id,nombre,apellido,nick){
-	this.id = id;
-	this.nombre = nombre;
-	this.apellido = apellido;
-	this.nick = nick;
+	trailer : "https://www.youtube.com/embed/sC9abcLLQpI",
 }
 
-function pelicula(id,id-cine,nombre,foto,sinopsis,trailer){
-	this.id = id;
-	this.id-cine = id-cine;
-	this.nombre = nombre;
-	this.foto = foto;
-	this.sinopsis = sinopsis;
-	this.trailer = trailer;
-}
+Cines = [cine1,cine2,cine3];
+Peliculas = [peli1,peli2,peli3];
+
 
 function altaCine(){
 	
@@ -98,7 +101,7 @@ function altaUsuario(){
 function altaPelicula(){
 	
 	var id       = document.getElementById('peli-id').value;
-	var id-cine  = document.getElementById('peli-id-cine').value;
+	var id_cine  = document.getElementById('peli-id_cine').value;
 	var nombre   = document.getElementById('peli-nombre').value;
 	var foto     = document.getElementById('peli-foto').value;
 	var sinopsis = document.getElementById('peli-sinopsis').value;
@@ -109,26 +112,55 @@ function altaPelicula(){
 }
 
 function Listar(){
-
+   
 	for (var i in Cines){
 		var cine = document.createElement("div");
 		cine.setAttribute("id",Cines[i].id); 
 
 		for (var j in Peliculas){
-			if (Cines[i].id == Peliculas[j].id-cine){
+			if (Cines[i].id == Peliculas[j].id_cine){
 				
 				var nombre  = document.createElement("div")
-				var detalle = document.createTextNode(Peliculas[j].nombre);
-				
+				var nomDetalle = document.createTextNode(Peliculas[j].nombre);
+
 				nombre.setAttribute("id",Peliculas[i].id);
-				nombre.appendChild(detalle);
+				nombre.appendChild(nomDetalle);
 				cine.appendChild(nombre);
+				
+				var foto  = document.createElement("div")
+				var fotoValor = document.createTextNode(Peliculas[j].foto);
+
+				foto.setAttribute("id",Peliculas[i].id+ "-foto");
+				foto.appendChild(fotoValor);
+				cine.appendChild(foto);
+
+				var sinopsis  = document.createElement("div")
+				var sinopsis_text = document.createTextNode(Peliculas[j].sinopsis);
+
+				sinopsis.setAttribute("id",Peliculas[i].id+ "-sinopsis");
+				sinopsis.appendChild(sinopsis_text);
+				cine.appendChild(sinopsis);
+
+				var trailer  = document.createElement("iframe")
+
+				trailer.src = Peliculas[j].trailer;
+				trailer.autoPlay = true;
+
+				trailer.setAttribute("id",Peliculas[i].id+ "-trailer");
+				cine.appendChild(trailer);
 			}
 		}		
-		document.body.appendChild(cine);
+		document.getElementById("pelicula").appendChild(cine);
 	}
 }
 
+function ordenar(vector){
+
+}
+
+window.onload = function() {
+	Listar();
+};
 
 
 
