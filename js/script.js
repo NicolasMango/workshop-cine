@@ -27,20 +27,20 @@ function pelicula(id,id_cine,nombre,foto,sinopsis,trailer){
 }
 
 var cine1 = {
-     id  : "cine1",
+     id  : 9887,
      nombre : "208",
      loc   : "Automatica",
      max : "Nafta",
 }
 var cine2 = {
-     id  : "cine2",
+     id  : 5,
      nombre : "208",
      loc   : "Automatica",
      max : "Nafta",
  }
 
 var cine3 = {
-     id  : "cine3",
+     id  : 55,
      nombre : "208",
      loc   : "Automatica",
      max : "Nafta",
@@ -56,7 +56,7 @@ var peli1 = {
 
 var peli2 = {
 	id : "peli2",
-	id_cine : "cine2",
+	id_cine : "cine24",
 	nombre : "endo",
 	foto : "wwww.gooogle.com.ar",
 	sinopsis : "una cagada",
@@ -65,7 +65,7 @@ var peli2 = {
 
 var peli3 = {
 	id : "peli3",
-	id_cine : "cine3",
+	id_cine : "cine0",
 	nombre : "garcha",
 	foto : "wwwwwww.gooogle.com.ar",
 	sinopsis : "pepe",
@@ -74,7 +74,6 @@ var peli3 = {
 
 Cines = [cine1,cine2,cine3];
 Peliculas = [peli1,peli2,peli3];
-
 
 function altaCine(){
 	
@@ -155,10 +154,17 @@ function Listar(){
 }
 
 function ordenar(vector){
-
+   
+// Para procesar datos , ordenar ect : https://lodash.com/
+   Cines = vector.sort(function (a, b) {
+    return (a.id - b.id)
+});
+   debugger;
 }
 
+
 window.onload = function() {
+	ordenar(Cines);
 	Listar();
 };
 
