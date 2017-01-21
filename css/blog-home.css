@@ -16,6 +16,50 @@ footer {
 	
 	position relative;
 	;
-	 
 
+}
+
+.pelicula{
+    flex-direction: row;
+    display: flex;
+    flex-flow: inherit;
+    height: 400px;
+    margin-bottom: 2%;
+    border-radius: 0px 0px 0px 0px;
+    -moz-border-radius: 0px 0px 0px 0px;
+    -webkit-border-radius: 0px 0px 0px 0px;
+    border: 1px solid #050505;
+}
+
+.pelicula img{
+    max-height: 70%;
+    margin-top: 5%;
+    margin-left: 2%;
+}
+
+.pelicula iframe{
+    max-height: 50%;
+}
+
+.pelicula div{
+    margin: 30px;
+    max-width: 50%;
+
+}
+
+.pelicula h2{
+    margin-top: 13px;
+    margin-bottom: 0;
+    font-size: 35px;
+}
+
+.pelicula h3{
+    margin-top: 45px;
+    margin-bottom: 10px;
+    font-size: 20px
+}
+
+.pelicula iframe {
+    max-height: 50%;
+    margin-top: 9%;
 }

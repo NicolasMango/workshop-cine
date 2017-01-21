@@ -28,11 +28,12 @@
 
 <body>
     <!-- Page Content -->
+
     <div class="container">
 
         <div class="row">
 
-            <!-- Esqueleto Cine -->
+            <!-- Esqueleto Cine-->
             <div class="col-md-8 cine">
 
                 <h1 class="page-header">
@@ -43,18 +44,7 @@
                 <!-- Esqueleto pelicula -->
                 <div id="pelicula"> 
                     
-                    <h2 id="nombre" class="peli">     </h2>
-                    <hr>
-                    <img class="img-responsive" src="imagenes/1.jpeg" height="600" width="400" alt="">
-                    <iframe class="trailerPosition" width="420" height="315"src=" 
-                   https://www.youtube.com/embed/tV_IhWE4LP0"> </iframe>
-                    
-                    <hr>
-                    <p class="pelicula"> </p>
-
-                    <hr>
                 </div>
-
 
             </div>
 
@@ -70,13 +60,48 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
-                                <li><a href="#">Listar</a>
+                                <li>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary">Añadir</button>
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                           <li data-toggle="modal" data-target=" #añadirCine" data-whatever="@mdo">
+                                               <a href="#">Añadir Cine</a>
+                                           </li>
+                                           <li data-toggle="modal" data-target=" #añadirPelicula" data-whatever="@mdo">
+                                               <a href="#">Añadir Pelicula</a>
+                                           </li>
+                                           <li data-toggle="modal" data-target=" #añadirUsuario" data-whatever="@mdo">
+                                               <a href="#">Añadir Usuario</a>
+                                           </li>
+                                        </ul>
+                                     </div>
                                 </li>
-                                <li><a href="#">Añadir</a>
+                                <li>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary">Eliminar</button>
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                           <li data-toggle="modal" data-target=" #eliminarCine" data-whatever="@mdo" onclick="optionCine('eliminar-id-cine')">
+                                               <a href="#">Eliminar Cine</a>
+                                           </li>
+                                           <li data-toggle="modal" data-target=" #eliminarPelicula" data-whatever="@mdo" onclick="optionCine('delete-id-cine')">
+                                               <a href="#">Eliminar Pelicula</a>
+                                           </li>
+                                           <li data-toggle="modal" data-target=" #eliminarUser" data-whatever="@mdo" onclick="optionUser()">
+                                               <a href="#">Eliminar Usuario</a>
+                                           </li>
+                                        </ul>
+                                     </div>
                                 </li>
-                                <li><a href="#">Eliminar</a>
-                                </li>
-                                <li><a href="#">Ordenar</a>
+                                <li>
+                                    <a href="#">Ordenar</a>
                                 </li>
                             </ul>
                         </div>
@@ -84,6 +109,184 @@
                            </div>
                     <!-- /.row -->
                 </div>
+                <!-- Split button -->
+
+                <div class="modal fade" id="añadirCine" tabindex="-1" role="dialog" aria-labelledby="añadirCineLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="añadirCineLabel">Nueva Cine</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="cine-nombre" class="control-label">Nombre:</label>
+                            <input type="text" class="form-control" id="cine-nombre" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="cine-loc" class="control-label">Lugar:</label>
+                            <input class="form-control" id="cine-loc"></input>
+                          </div>
+                          <div class="form-group">
+                            <label for="cine-max" class="control-label">Capacidad:</label>
+                            <input type="number" class="form-control" id="cine-max" required>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="altaCine();">Añadir</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal fade" id="añadirPelicula" tabindex="-1" role="dialog" aria-labelledby="añadirPeliculaLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="añadirPeliculaLabel">Nueva Pelicula</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="peli-nombre" class="control-label">Nombre:</label>
+                            <input type="text" class="form-control" id="peli-nombre" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="peli-id_cine" class="control-label">Cine:</label>
+                            <select class="form-control" id="peli-id_cine"></select>
+                          </div>
+                          <div class="form-group">
+                            <label for="peli-foto" class="control-label">Foto:</label>
+                            <input type="text" class="form-control" id="peli-foto" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="peli-sinopsis" class="control-label" >Sinopsis:</label>
+                            <textarea class="form-control" id="peli-sinopsis"></textarea>
+                          </div>
+                          <div class="form-group">
+                            <label for="peli-trailer" class="control-label" required>Trailer:</label>
+                            <textarea class="form-control" id="peli-trailer"></textarea>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="altaPelicula();">Añadir</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal fade" id="añadirUsuario" tabindex="-1" role="dialog" aria-labelledby="añadirUsuarioLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="añadirUsuarioLabel">Nueva Pelicula</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="user-nombre" class="control-label">Nombre:</label>
+                            <input type="text" class="form-control" id="user-nombre" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="user-apellido" class="control-label">Apellido:</label>
+                            <input type="text" class="form-control" id="user-apellido"></input>
+                          </div>
+                          <div class="form-group">
+                            <label for="user-nick" class="control-label">Apodo:</label>
+                            <input type="text" class="form-control" id="user-nick" required>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="altaUsuario();">Añadir</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal fade" id="eliminarCine" tabindex="-1" role="dialog" aria-labelledby="eliminarCineLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="eliminarCineLabel">Eliminar Cine</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="eliminar-id-cine" class="control-label">Cine:</label>
+                            <select class="form-control" id="eliminar-id-cine"></select>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="eliminarCine();">Eliminar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal fade" id="eliminarPelicula" tabindex="-1" role="dialog" aria-labelledby="eliminarPeliculaLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="eliminarPeliculaLabel">Eliminar Pelicula</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="delete-id-cine" class="control-label">Cine:</label>
+                            <select class="form-control" id="delete-id-cine" onchange="optionPeliculas();">
+                                <option value=""> Cines </option>
+                            </select>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="eliminar-id-pelicula" class="control-label">Pelicula:</label>
+                            <select class="form-control" id="eliminar-id-pelicula"></select>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="eliminarPelicula();">Eliminar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal fade" id="eliminarUser" tabindex="-1" role="dialog" aria-labelledby="eliminarUserLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="eliminarUserLabel">Eliminar Cine</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="eliminar-id-user" class="control-label">User:</label>
+                            <select class="form-control" id="eliminar-id-user"></select>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="eliminarUsuario();">Eliminar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
 
                 <!-- Side Widget Well -->
             </div>
